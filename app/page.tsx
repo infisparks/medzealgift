@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import Head from "next/head";
 import ScratchCard from "@/components/ScratchCard";
 import ParticleEffect from "@/components/ParticleEffect";
@@ -13,20 +14,60 @@ export default function Home() {
   const [isRevealed, setIsRevealed] = useState(false);
   const [showAnimation, setShowAnimation] = useState(false);
   const { toast } = useToast();
+  const searchParams = useSearchParams();
+  const phoneNumber = searchParams.get("number");
 
-  const handleReveal = () => {
+  const handleReveal = async () => {
     setIsRevealed(true);
     setShowAnimation(true);
-    
+
     toast({
       title: "Congratulations!",
       description: "Your coupon has been revealed!",
       duration: 3000,
     });
+
+    // Send WhatsApp message
+    if (phoneNumber) {
+      try {
+        const response = await fetch("https://wa.medblisss.com/send-image-url", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            token: "99583991572",
+            number: `91${phoneNumber.replace(/\s/g, "")}`,
+            imageUrl: "https://raw.githubusercontent.com/infisparks/images/refs/heads/main/medzeal.png",
+            caption: "Congratulations! You've unlocked an exclusive Hydrafacial Therapy coupon from Medzeal. Book your appointment now at https://www.medzeal.in/appoinment/index.html?package=Hydrafacial%20Therapy",
+          }),
+        });
+
+        if (!response.ok) {
+          throw new Error("Failed to send WhatsApp message");
+        }
+      } catch (error) {
+        console.error("Error sending WhatsApp message:", error);
+        toast({
+          title: "Error",
+          description: "Failed to send WhatsApp message. Please try again later.",
+          variant: "destructive",
+          duration: 3000,
+        });
+      }
+    } else {
+      console.warn("No phone number provided in URL");
+      toast({
+        title: "Warning",
+        description: "No phone number provided. Please include a number in the URL.",
+        variant: "default",
+        duration: 3000,
+      });
+    }
   };
 
   const handleUseButton = () => {
-    // In a real app, this would navigate to the booking page
+    // Navigate to the booking page
     window.location.href = "https://www.medzeal.in/appoinment/index.html?package=Hydrafacial%20Therapy";
   };
 
