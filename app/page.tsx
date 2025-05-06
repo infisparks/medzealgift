@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Head from "next/head";
 import ScratchCard from "@/components/ScratchCard";
@@ -32,13 +32,12 @@ export default function Home() {
       try {
         const response = await fetch("https://wa.medblisss.com/send-image-url", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             token: "99583991572",
             number: `91${phoneNumber.replace(/\s/g, "")}`,
-            imageUrl: "https://raw.githubusercontent.com/infisparks/images/refs/heads/main/medzeal.jpg",
+            imageUrl:
+              "https://raw.githubusercontent.com/infisparks/images/refs/heads/main/medzeal.jpg",
             caption: `🎉 *Congratulations!*
 
 > You’ve unlocked an exclusive Medzeal offer.
@@ -58,11 +57,9 @@ export default function Home() {
           }),
         });
 
-        if (!response.ok) {
-          throw new Error("Failed to send WhatsApp message");
-        }
+        if (!response.ok) throw new Error("Failed to send WhatsApp message");
       } catch (error) {
-        console.error("Error sending WhatsApp message:", error);
+        console.error(error);
         toast({
           title: "Error",
           description: "Failed to send WhatsApp message. Please try again later.",
@@ -71,7 +68,6 @@ export default function Home() {
         });
       }
     } else {
-      console.warn("No phone number provided in URL");
       toast({
         title: "Warning",
         description: "No phone number provided. Please include a number in the URL.",
@@ -82,49 +78,83 @@ export default function Home() {
   };
 
   const handleUseButton = () => {
-    // Navigate to the booking page
-    window.location.href = "https://www.medzeal.in/appoinment/index.html?package=Hydrafacial%20Therapy";
+    window.location.href =
+      "https://www.medzeal.in/appoinment/index.html?package=Hydrafacial%20Therapy";
   };
 
   return (
-    <main className="min-h-screen bg-gradient-radial from-[#0e8db2] via-[#4cb2cf] to-[#9fdfef] flex flex-col items-center justify-center p-4 relative overflow-hidden">
-      <div className="absolute inset-0 bg-[url('/noise.png')] opacity-5 mix-blend-soft-light pointer-events-none"></div>
-      
-      <div className="max-w-md w-full text-center z-10">
-        <h1 className="text-3xl md:text-4xl font-bold text-white mb-6 animate-pulse-slow">
-          Scratch to Reveal Your Coupon!
-        </h1>
-        
-        <div className="relative mb-8">
-          <ScratchCard 
-            overlayImage="https://raw.githubusercontent.com/infisparks/images/refs/heads/main/gift.png"
-            couponImage="https://raw.githubusercontent.com/infisparks/images/refs/heads/main/medzeal.jpg"
-            onRevealed={handleReveal}
-            revealThreshold={0.15} // Reveal at 15% scratched
-          />
-          
-          {showAnimation && <ParticleEffect />}
+    <>
+      <Head>
+        {/* Open Graph / WhatsApp Share */}
+        <meta property="og:title" content="Scratch to Reveal Your Coupon!" />
+        <meta
+          property="og:description"
+          content="Unlock your exclusive offer with Medzeal!"
+        />
+        <meta
+          property="og:image"
+          content="https://raw.githubusercontent.com/infisparks/images/refs/heads/main/gift.png"
+        />
+        <meta property="og:type" content="website" />
+
+        {/* Twitter Card (optional) */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Scratch to Reveal Your Coupon!" />
+        <meta
+          name="twitter:description"
+          content="Unlock your exclusive offer with Medzeal!"
+        />
+        <meta
+          name="twitter:image"
+          content="https://raw.githubusercontent.com/infisparks/images/refs/heads/main/gift.png"
+        />
+      </Head>
+
+      <main className="min-h-screen bg-gradient-radial from-[#0e8db2] via-[#4cb2cf] to-[#9fdfef] flex flex-col items-center justify-center p-4 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/noise.png')] opacity-5 mix-blend-soft-light pointer-events-none" />
+
+        <div className="max-w-md w-full text-center z-10">
+          <h1 className="text-3xl md:text-4xl font-bold text-white mb-6 animate-pulse-slow">
+            Scratch to Reveal Your Coupon!
+          </h1>
+
+          <div className="relative mb-8">
+            <ScratchCard
+              overlayImage="https://raw.githubusercontent.com/infisparks/images/refs/heads/main/gift.png"
+              couponImage="https://raw.githubusercontent.com/infisparks/images/refs/heads/main/medzeal.jpg"
+              onRevealed={handleReveal}
+              revealThreshold={0.15}
+            />
+
+            {showAnimation && <ParticleEffect />}
+          </div>
+
+          <p
+            className={`text-white text-lg mt-4 animate-bounce-slow transition-opacity duration-500 ${
+              isRevealed ? "opacity-0" : "opacity-100"
+            }`}
+          >
+            Scratch the card to reveal your exclusive offer!
+          </p>
+
+          <div
+            className={`transition-all duration-500 ease-out transform ${
+              isRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+          >
+            {isRevealed && (
+              <Button
+                onClick={handleUseButton}
+                size="lg"
+                className="mt-6 bg-gradient-to-br from-[#ffffff] to-[#e6f7fd] text-[#0e8db2] hover:from-[#ffffff] hover:to-[#c9f0fc] font-bold px-6 py-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group"
+              >
+                Use Coupon Code & Book Service Online
+                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </Button>
+            )}
+          </div>
         </div>
-        
-        <p 
-          className={`text-white text-lg mt-4 animate-bounce-slow transition-opacity duration-500 ${isRevealed ? 'opacity-0' : 'opacity-100'}`}
-        >
-          Scratch the card to reveal your exclusive offer!
-        </p>
-        
-        <div className={`transition-all duration-500 ease-out transform ${isRevealed ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          {isRevealed && (
-            <Button
-              onClick={handleUseButton}
-              size="lg"
-              className="mt-6 bg-gradient-to-br from-[#ffffff] to-[#e6f7fd] text-[#0e8db2] hover:from-[#ffffff] hover:to-[#c9f0fc] font-bold px-6 py-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group"
-            >
-              Use Coupon Code & Book Service Online
-              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-            </Button>
-          )}
-        </div>
-      </div>
-    </main>
+      </main>
+    </>
   );
 }
