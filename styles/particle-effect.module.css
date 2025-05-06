@@ -1,0 +1,35 @@
+.particleContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 20;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 1;
+  filter: blur(0);
+  z-index: 30;
+  box-shadow: 0 0 10px currentColor;
+  transition: opacity 0.3s ease-out;
+}
+
+/* Adding variations for more interesting particles */
+.particle:nth-child(3n) {
+  border-radius: 3px;
+  transform: rotate(45deg);
+}
+
+.particle:nth-child(5n) {
+  filter: blur(1px);
+}
+
+.particle:nth-child(7n) {
+  box-shadow: 0 0 20px currentColor;
+}
