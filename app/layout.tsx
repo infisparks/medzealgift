@@ -28,11 +28,11 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         {/* Tab / theme color */}
-        <meta name="theme-color" content="#FF5722" />
+        <meta name="theme-color" content="#55B7D3" />
         {/* Windows Phone */}
-        <meta name="msapplication-navbutton-color" content="#FF5722" />
+        <meta name="msapplication-navbutton-color" content="#55B7D3" />
         {/* iOS Safari */}
-        <meta name="apple-mobile-web-app-status-bar-style" content="#FF5722" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="#55B7D3" />
 
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
