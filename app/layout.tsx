@@ -37,7 +37,7 @@ export default function RootLayout({
           property="og:image"
           content="https://raw.githubusercontent.com/infisparks/images/refs/heads/main/gift.png"
         />
-         <meta property="og:url" content="https://infispark.in" />
+         <meta property="og:url" content="https://coupon.medzeal.in" />
         <meta property="og:type" content="website" />
 
         {/* Twitter Card (optional) */}
