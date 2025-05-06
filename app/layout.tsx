@@ -1,4 +1,4 @@
-// app/layout.tsx (or RootLayout.tsx)
+// app/layout.tsx
 
 import "./globals.css";
 import type { Metadata } from "next";
@@ -27,12 +27,39 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Tab / theme color */}
-        <meta name="theme-color" content="#55B7D3" />
-        {/* Windows Phone */}
-        <meta name="msapplication-navbutton-color" content="#55B7D3" />
-        {/* iOS Safari */}
-        <meta name="apple-mobile-web-app-status-bar-style" content="#55B7D3" />
+        {/* Light-mode */}
+        <meta
+          name="theme-color"
+          media="(prefers-color-scheme: light)"
+          content="#55B7D3"
+        />
+        <meta
+          name="msapplication-navbutton-color"
+          media="(prefers-color-scheme: light)"
+          content="#55B7D3"
+        />
+        <meta
+          name="apple-mobile-web-app-status-bar-style"
+          media="(prefers-color-scheme: light)"
+          content="default"
+        />
+
+        {/* Dark-mode */}
+        <meta
+          name="theme-color"
+          media="(prefers-color-scheme: dark)"
+          content="#1A202C"
+        />
+        <meta
+          name="msapplication-navbutton-color"
+          media="(prefers-color-scheme: dark)"
+          content="#1A202C"
+        />
+        <meta
+          name="apple-mobile-web-app-status-bar-style"
+          media="(prefers-color-scheme: dark)"
+          content="black-translucent"
+        />
 
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
