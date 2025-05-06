@@ -1,3 +1,5 @@
+// app/layout.tsx (or RootLayout.tsx)
+
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -25,6 +27,13 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* Tab / theme color */}
+        <meta name="theme-color" content="#FF5722" />
+        {/* Windows Phone */}
+        <meta name="msapplication-navbutton-color" content="#FF5722" />
+        {/* iOS Safari */}
+        <meta name="apple-mobile-web-app-status-bar-style" content="#FF5722" />
+
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body className={inter.className}>
