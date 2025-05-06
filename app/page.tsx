@@ -39,7 +39,22 @@ export default function Home() {
             token: "99583991572",
             number: `91${phoneNumber.replace(/\s/g, "")}`,
             imageUrl: "https://raw.githubusercontent.com/infisparks/images/refs/heads/main/medzeal.jpg",
-            caption: "Congratulations! You've unlocked an exclusive Hydrafacial Therapy coupon from Medzeal. Book your appointment now at https://www.medzeal.in/appoinment/index.html?package=Hydrafacial%20Therapy",
+            caption: `🎉 *Congratulations!*
+
+> You’ve unlocked an exclusive Medzeal offer.
+
+> 🛍️ *Special Offer*
+> Use coupon code *MEDZEAL20* to enjoy *40%* off on *Hair PRP* and *Face PRP* treatments.
+
+> 📅 *Book Your Appointment*
+> https://www.medzeal.in/appoinment
+
+> 📍 *Find Us Here*
+> https://maps.app.goo.gl/oj9vfKbMxM1Tf7hW7
+
+> ⏳ *Offer Expires: 2 June 2025*
+
+> We look forward to helping you look and feel your best!`,
           }),
         });
 
