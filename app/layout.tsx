@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://raw.githubusercontent.com/infisparks/images/refs/heads/main/gift.png",
+        url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbMEUw3G85GnOphc2b7_y03GnmyoPhWCy8XA&s",
         width: 1200,
         height: 630,
         alt: "MedZeal Coupon Card",
