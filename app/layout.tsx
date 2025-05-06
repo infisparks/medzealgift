@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Scratch to Reveal Your Coupon!",
     description: "Unlock your exclusive offer with Medzeal!",
-    images: ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbMEUw3G85GnOphc2b7_y03GnmyoPhWCy8XA&s"],
+    images: ["https://raw.githubusercontent.com/infisparks/images/refs/heads/main/cover.png"],
     type: "website",
   },
 };
