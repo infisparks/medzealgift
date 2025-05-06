@@ -86,7 +86,7 @@ export default function Home() {
     <>
       <Head>
         {/* Open Graph / WhatsApp Share */}
-        <meta property="og:title" content="Scratch to Reveal Your Coupon!" />
+        <meta property="og:title" content="Scratch to Reveal Your Coupons" />
         <meta
           property="og:description"
           content="Unlock your exclusive offer with Medzeal!"
