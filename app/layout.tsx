@@ -26,15 +26,14 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
        <Head>
         {/* Open Graph / WhatsApp Share */}
-        {/* <meta property="og:title" content="Scratch to Reveal Your Coupons" /> */}
-       
+        <meta property="og:title" content="Scratch to Reveal Your Coupons" />
+        <meta
+          property="og:description"
+          content="Unlock your exclusive offer with Medzeal!"
+        />
         <meta
           property="og:image"
           content="https://raw.githubusercontent.com/infisparks/images/refs/heads/main/gift.png"
-        />
-         <meta
-          property="og:description"
-          content="Unlock your exclusive offer with Medzeal!"
         />
         <meta property="og:type" content="website" />
 
