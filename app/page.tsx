@@ -38,7 +38,7 @@ export default function Home() {
           body: JSON.stringify({
             token: "99583991572",
             number: `91${phoneNumber.replace(/\s/g, "")}`,
-            imageUrl: "https://raw.githubusercontent.com/infisparks/images/refs/heads/main/medzeal.png",
+            imageUrl: "https://raw.githubusercontent.com/infisparks/images/refs/heads/main/medzeal.jpg",
             caption: "Congratulations! You've unlocked an exclusive Hydrafacial Therapy coupon from Medzeal. Book your appointment now at https://www.medzeal.in/appoinment/index.html?package=Hydrafacial%20Therapy",
           }),
         });
@@ -83,7 +83,7 @@ export default function Home() {
         <div className="relative mb-8">
           <ScratchCard 
             overlayImage="https://raw.githubusercontent.com/infisparks/images/refs/heads/main/gift.png"
-            couponImage="https://raw.githubusercontent.com/infisparks/images/refs/heads/main/medzeal.png"
+            couponImage="https://raw.githubusercontent.com/infisparks/images/refs/heads/main/medzeal.jpg"
             onRevealed={handleReveal}
             revealThreshold={0.15} // Reveal at 15% scratched
           />
